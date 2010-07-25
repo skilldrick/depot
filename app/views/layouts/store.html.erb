@@ -5,6 +5,7 @@
   <head>
     <title>Pragprog Books Online Store</title>
     <%= stylesheet_link_tag "depot", :media => "all" %>
+    <%= javascript_include_tag :defaults %>
   </head>
 
   <body id="store">
@@ -15,6 +16,9 @@
 
     <div id="columns">
       <div id="side">
+        <% hidden_div_if(@cart.items.empty?, :id => "cart") do %>
+          <%= render(:partial => "cart", :object => @cart) %>
+        <% end %>
         <p class="time"><%= Time.now %></p>
         <a href="#">Home</a><br />
         <a href="#">Questions</a><br />
