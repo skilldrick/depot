@@ -1,13 +1,25 @@
 <h1>Your Pragmatic Catalog</h1>
 
+<% if @count > 5 %>
+<p>You have visited this page
+  <%= pluralize(@count, 'time') %>.
+</p>
+<% end %>
+
   <% @products.each do |product| -%>
 
   <div class="entry">
-    <%= image_tag(product.image_url) %>
+    <%= link_to(image_tag(product.image_url), :method => :post,
+                                              :action => 'add_to_cart',
+                                              :id => product) %>
     <h3><%=h product.title %></h3>
     <%= product.description %>
     <div class="price-line">
-      <span class="price"><%= product.price %></span>
+      <span class="price"><%= number_to_currency(product.price,
+                                                :unit => "&pound;")
+                          %></span>
+      <%= button_to 'Add to Cart', :action => 'add_to_cart',
+                                   :id => product %>
     </div>
   </div>
   <% end %>
