@@ -27,6 +27,16 @@ class StoreController < ApplicationController
     end
   end
 
+  def decrement_item
+    product = Product.find(params[:id])
+    @cart = find_cart
+    @cart.decrement_product(product)
+    respond_to do |format|
+      format.js if request.xhr?
+      format.html {redirect_to_index}
+    end
+  end
+
   private
 
   def redirect_to_index(msg = nil)
