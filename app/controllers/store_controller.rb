@@ -19,8 +19,12 @@ class StoreController < ApplicationController
   end
 
   def empty_cart
+    @cart = find_cart
     session[:cart] = nil
-    redirect_to_index
+    respond_to do |format|
+      format.js if request.xhr?
+      format.html {redirect_to_index}
+    end
   end
 
   private
