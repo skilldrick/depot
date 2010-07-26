@@ -4,8 +4,10 @@
   <% @products.each do |product| -%>
 
   <div class="entry">
-    <%= link_to_remote(image_tag(product.image_url),
-          :url => { :action => 'add_to_cart', :id => product }) %>
+    <% form_remote_tag :url => { :action => 'add_to_cart',
+                                 :id => product } do %>
+      <%= image_submit_tag product.image_url %>
+    <% end %>
     <h3><%=h product.title %></h3>
     <%= product.description %>
     <div class="price-line">

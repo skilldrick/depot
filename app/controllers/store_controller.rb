@@ -10,7 +10,8 @@ class StoreController < ApplicationController
     @cart = find_cart
     @current_item = @cart.add_product(product)
     respond_to do |format|
-      format.js
+      format.js if request.xhr?
+      format.html {redirect_to_index}
     end
   rescue ActiveRecord::RecordNotFound
     logger.error("Attempt to access invalid product #{params[:id]}")
