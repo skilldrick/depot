@@ -13,7 +13,7 @@
 </table>
 
 <% if @order.nil? %>
-  <%= button_to t "layout.cart.button.checkout", :action => 'checkout', :method => "get" %>
+  <%= button_to t("layout.cart.button.checkout"), :action => 'checkout', :method => "get" %>
 <% end %>
 
 <% form_remote_tag :url => { :action => 'empty_cart' } do %>
