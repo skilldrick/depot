@@ -3,7 +3,7 @@ class InfoController < ApplicationController
     @product = Product.find(params[:id])
     @orders = @product.orders
     respond_to do |format|
-      format.html
+      format.html {render :layout => false }
       format.xml { render :layout => false }
       format.atom { render :layout => false }
       format.json { render :layout => false,

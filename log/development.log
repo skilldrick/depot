@@ -12792,3 +12792,175 @@ Rendering template within layouts/store
 Rendering store/index
 Rendered store/_cart (2.1ms)
 Completed in 28ms (View: 16, DB: 1) | 200 OK [http://localhost/store]
+
+
+Processing ApplicationController#index (for 127.0.0.1 at 2010-07-31 12:14:42) [GET]
+
+ActionController::RoutingError (No route matches "/who_bought/5" with {:method=>:get}):
+  <internal:prelude>:8:in `synchronize'
+  /usr/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+  /usr/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+  /usr/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendering rescues/layout (not_found)
+
+
+Processing InfoController#who_bought (for 127.0.0.1 at 2010-07-31 12:14:48) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering info/who_bought
+  [4;35;1mOrder Load (0.4ms)[0m   [0mSELECT "orders".* FROM "orders" INNER JOIN "line_items" ON "orders".id = "line_items".order_id WHERE (("line_items".product_id = 5)) [0m
+
+ActionView::TemplateError (undefined local variable or method `xhtml' for #<ActionView::Base:0xb073348>) on line #1 of app/views/info/who_bought.html.builder:
+1: xhtml.order_list do
+2:   for o in @orders
+3:     xhtml.order do
+4:       xhtml.h1(o.name)
+
+    app/views/info/who_bought.html.builder:1:in `_run_builder_app47views47info47who_bought46html46builder'
+    app/controllers/info_controller.rb:6:in `block (2 levels) in who_bought'
+    app/controllers/info_controller.rb:5:in `who_bought'
+    <internal:prelude>:8:in `synchronize'
+    /usr/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /usr/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /usr/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (88.2ms)
+Rendered rescues/_request_and_response (1.7ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing InfoController#who_bought (for 127.0.0.1 at 2010-07-31 12:15:05) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mProduct Load (0.2ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering info/who_bought
+  [4;35;1mOrder Load (0.4ms)[0m   [0mSELECT "orders".* FROM "orders" INNER JOIN "line_items" ON "orders".id = "line_items".order_id WHERE (("line_items".product_id = 5)) [0m
+Completed in 33ms (View: 18, DB: 1) | 200 OK [http://localhost/info/who_bought/5]
+
+
+Processing InfoController#who_bought (for 127.0.0.1 at 2010-07-31 12:15:16) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mProduct Load (1.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering info/who_bought
+  [4;35;1mOrder Load (0.5ms)[0m   [0mSELECT "orders".* FROM "orders" INNER JOIN "line_items" ON "orders".id = "line_items".order_id WHERE (("line_items".product_id = 5)) [0m
+Completed in 24ms (View: 9, DB: 2) | 200 OK [http://localhost/info/who_bought/5]
+
+
+Processing InfoController#who_bought (for 127.0.0.1 at 2010-07-31 12:16:51) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering info/who_bought
+
+ActionView::TemplateError (undefined method `name' for #<Product:0xbc4c9c8>) on line #3 of app/views/info/who_bought.html.builder:
+1: xml.html do
+2:   xml.head do
+3:     xml.title("Orders for #{@product.name}")
+4:   end
+5:   xml.body do
+6:     for o in @orders
+
+    app/views/info/who_bought.html.builder:3:in `block (2 levels) in _run_builder_app47views47info47who_bought46html46builder'
+    app/views/info/who_bought.html.builder:2:in `block in _run_builder_app47views47info47who_bought46html46builder'
+    app/views/info/who_bought.html.builder:1:in `_run_builder_app47views47info47who_bought46html46builder'
+    app/controllers/info_controller.rb:6:in `block (2 levels) in who_bought'
+    app/controllers/info_controller.rb:5:in `who_bought'
+    <internal:prelude>:8:in `synchronize'
+    /usr/lib/ruby/1.9.1/webrick/httpserver.rb:111:in `service'
+    /usr/lib/ruby/1.9.1/webrick/httpserver.rb:70:in `run'
+    /usr/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
+
+Rendered rescues/_trace (100.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+
+
+Processing InfoController#who_bought (for 127.0.0.1 at 2010-07-31 12:17:01) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering info/who_bought
+  [4;36;1mOrder Load (0.4ms)[0m   [0;1mSELECT "orders".* FROM "orders" INNER JOIN "line_items" ON "orders".id = "line_items".order_id WHERE (("line_items".product_id = 5)) [0m
+Completed in 34ms (View: 21, DB: 1) | 200 OK [http://localhost/info/who_bought/5]
+
+
+Processing InfoController#who_bought (for 127.0.0.1 at 2010-07-31 12:17:19) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering info/who_bought
+  [4;36;1mOrder Load (0.4ms)[0m   [0;1mSELECT "orders".* FROM "orders" INNER JOIN "line_items" ON "orders".id = "line_items".order_id WHERE (("line_items".product_id = 5)) [0m
+Completed in 35ms (View: 22, DB: 1) | 200 OK [http://localhost/info/who_bought/5]
+
+
+Processing InfoController#who_bought (for 127.0.0.1 at 2010-07-31 12:17:26) [GET]
+  Parameters: {"id"=>"6"}
+  [4;35;1mProduct Load (0.4ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 6) [0m
+Rendering info/who_bought
+  [4;36;1mOrder Load (0.6ms)[0m   [0;1mSELECT "orders".* FROM "orders" INNER JOIN "line_items" ON "orders".id = "line_items".order_id WHERE (("line_items".product_id = 6)) [0m
+Completed in 26ms (View: 12, DB: 1) | 200 OK [http://localhost/info/who_bought/6]
+
+
+Processing StoreController#add_to_cart (for 127.0.0.1 at 2010-07-31 12:52:37) [POST]
+  Parameters: {"authenticity_token"=>"yzTfxhs11/einpUjwdttmrB+0+cqHr9NJNBs0edm5bs=", "_"=>"", "id"=>"4"}
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 4) [0m
+Rendering store/add_to_cart
+Rendered store/_cart_item (6.7ms)
+Rendered store/_cart (17.9ms)
+Completed in 45ms (View: 30, DB: 1) | 200 OK [http://localhost/store/add_to_cart?id=4]
+
+
+Processing StoreController#add_to_cart (for 127.0.0.1 at 2010-07-31 12:52:39) [POST]
+  Parameters: {"authenticity_token"=>"yzTfxhs11/einpUjwdttmrB+0+cqHr9NJNBs0edm5bs=", "_"=>"", "id"=>"6"}
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 6) [0m
+Rendering store/add_to_cart
+Rendered store/_cart_item (5.3ms)
+Rendered store/_cart_item (0.8ms)
+Rendered store/_cart (7.9ms)
+Completed in 26ms (View: 10, DB: 1) | 200 OK [http://localhost/store/add_to_cart?id=6]
+
+
+Processing StoreController#add_to_cart (for 127.0.0.1 at 2010-07-31 12:52:40) [POST]
+  Parameters: {"authenticity_token"=>"yzTfxhs11/einpUjwdttmrB+0+cqHr9NJNBs0edm5bs=", "_"=>"", "id"=>"5"}
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering store/add_to_cart
+Rendered store/_cart_item (6.0ms)
+Rendered store/_cart_item (0.8ms)
+Rendered store/_cart_item (0.7ms)
+Rendered store/_cart (9.5ms)
+Completed in 29ms (View: 12, DB: 1) | 200 OK [http://localhost/store/add_to_cart?id=5]
+
+
+Processing StoreController#checkout (for 127.0.0.1 at 2010-07-31 12:52:42) [POST]
+  Parameters: {"authenticity_token"=>"yzTfxhs11/einpUjwdttmrB+0+cqHr9NJNBs0edm5bs=", "method"=>"get"}
+Rendering template within layouts/store
+Rendering store/checkout
+Rendered store/_cart_item (6.7ms)
+Rendered store/_cart_item (0.8ms)
+Rendered store/_cart_item (0.8ms)
+Rendered store/_cart (9.9ms)
+Completed in 47ms (View: 29, DB: 1) | 200 OK [http://localhost/store/checkout?method=get]
+
+
+Processing StoreController#decrement_item (for 127.0.0.1 at 2010-07-31 12:52:51) [POST]
+  Parameters: {"authenticity_token"=>"yzTfxhs11/einpUjwdttmrB+0+cqHr9NJNBs0edm5bs=", "_"=>"", "id"=>"4"}
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 4) [0m
+Rendering store/decrement_item
+Rendered store/_cart_item (5.2ms)
+Rendered store/_cart_item (0.8ms)
+Rendered store/_cart (7.8ms)
+Completed in 35ms (View: 19, DB: 1) | 200 OK [http://localhost/store/decrement_item?id=4]
+
+
+Processing StoreController#decrement_item (for 127.0.0.1 at 2010-07-31 12:52:52) [POST]
+  Parameters: {"authenticity_token"=>"yzTfxhs11/einpUjwdttmrB+0+cqHr9NJNBs0edm5bs=", "_"=>"", "id"=>"6"}
+  [4;35;1mProduct Load (0.3ms)[0m   [0mSELECT * FROM "products" WHERE ("products"."id" = 6) [0m
+Rendering store/decrement_item
+Rendered store/_cart_item (5.2ms)
+Rendered store/_cart (6.9ms)
+Completed in 25ms (View: 9, DB: 1) | 200 OK [http://localhost/store/decrement_item?id=6]
+
+
+Processing StoreController#decrement_item (for 127.0.0.1 at 2010-07-31 12:52:53) [POST]
+  Parameters: {"authenticity_token"=>"yzTfxhs11/einpUjwdttmrB+0+cqHr9NJNBs0edm5bs=", "_"=>"", "id"=>"5"}
+  [4;36;1mProduct Load (0.3ms)[0m   [0;1mSELECT * FROM "products" WHERE ("products"."id" = 5) [0m
+Rendering store/decrement_item
+Rendered store/_cart (3.8ms)
+Completed in 22ms (View: 6, DB: 1) | 200 OK [http://localhost/store/decrement_item?id=5]
