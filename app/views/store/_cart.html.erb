@@ -1,4 +1,4 @@
-<div class="cart-title">Your cart</div>
+<div class="cart-title"><%=t "layout.cart.title" %></div>
 
 <table>
   <%= render(:partial => "cart_item", :collection => cart.items) %>
@@ -13,9 +13,9 @@
 </table>
 
 <% if @order.nil? %>
-  <%= button_to "Checkout", :action => 'checkout', :method => "get" %>
+  <%= button_to t "layout.cart.button.checkout", :action => 'checkout', :method => "get" %>
 <% end %>
 
 <% form_remote_tag :url => { :action => 'empty_cart' } do %>
-  <%= submit_tag "Empty Cart" %>
+  <%= submit_tag t "layout.cart.button.empty" %>
 <% end %>
