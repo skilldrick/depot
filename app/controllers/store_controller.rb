@@ -4,6 +4,12 @@ class StoreController < ApplicationController
   
   def index
     @products = Product.find_products_for_sale
+
+    respond_to do |format|
+      format.html
+      format.xml { render :layout => false,
+                   :xml => @products.to_xml }
+    end
   end
 
   def add_to_cart
